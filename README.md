@@ -1,1 +1,1 @@
-# qd-hanged-man
+# qd-hanged-one
