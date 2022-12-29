@@ -7,32 +7,31 @@ Created on 14/12/2022
 
 import random
 
-
+from src.i18n import choose_language, set_locale
 
 def choosen_word() -> str:
     scelta = input('Inserisci una lettera -> ')
     return scelta
 
-
-def carica_parole() -> list[str]:
-
-    livello = None
-    while livello not in ('facile', 'medio', 'difficile'): #controllo sull'input per verificare sia valido
-     livello = input('Scegli un livello di gioco:\n1. facile\n2. medio\n3. difficile -> ')
-
+def carica_parole(lingua:str) -> str:
+    
+    livello = ''
+    while(livello not in ['1', '2', '3']):
+        livello = input(_('Scegli un livello di gioco:\n1. facile\n2. medio\n3. difficile\n\n'))
     lista_di_parole = []
     
-    if livello == '1' :
-      file_name = 'easy.txt'
+    if livello == '1':
+        difficolta = 'easy'     
     elif livello == '2':
-      file_name = 'normal.txt'
+        difficolta = 'normal'    
     elif livello == '3':
-      file_name = 'hard.txt'
-
-    with open(file_name, 'r') as f:
-       for line in f:
-        parola = line.rstrip('\n')
-        lista_di_parole.append(parola)
+        difficolta = 'hard'
+        
+    
+    with open('src/db_words/%s/%s.txt' %(lingua, difficolta), 'r') as f:
+        for line in f:
+            parola = line.rstrip('\n')
+            lista_di_parole.append(parola)
 
     return lista_di_parole
      
@@ -121,9 +120,13 @@ def show_player_life():
     yield life
 
 
+# fai scegliere all'utente la lingua
+lingua = choose_language()
 
+# impostala come lingua per questa partita
+_ = set_locale(lingua)
 
-lista_di_parole = carica_parole()
+lista_di_parole = carica_parole(lingua)
 parola_da_indovinare = parola_random(lista_di_parole)
 lettere_indovinate = ['_' for lettera in parola_da_indovinare]
 vita_giocatore = show_player_life()
