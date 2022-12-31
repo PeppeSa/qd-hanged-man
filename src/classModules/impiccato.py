@@ -20,13 +20,13 @@ class Impiccato:
     
     def startGame(self) -> None:
         
-        while self.mistakesCounter != 6:
+        while self.mistakesCounter < 6:
             
             letter: str = input(_("\nInserisci una lettera -> "))
 
             if letter in self.word:
                 self.guessedLetters = self.__aggiorna_lettere_indovinate(self.word, letter, self.guessedLetters)
-                if self.word == ''.join(letter for letter in self.guessedLetters):
+                if self.word == ''.join(self.guessedLetters):
                     self.__write_in_classifica_txt()                    
                     print(_(f"{self.nickname} hai vinto, complimenti! Hai indovinato la parola: {self.word}"))
                     break
@@ -39,30 +39,39 @@ class Impiccato:
             print(_(f"{self.nickname} hai perso, la parola era: {self.word}"))
     
     
-    def __aggiorna_lettere_indovinate(self, parola, scelta, lettere_indovinate): 
+    def __aggiorna_lettere_indovinate(self, parola: str, scelta: str, lettere_indovinate: str): 
         for i, lettera in enumerate(self.word):
             if lettera == scelta:
                 lettere_indovinate[i] = lettera
         return lettere_indovinate
     
     def __visualizza_parola(self) -> None:
-        print(' '.join(lettera for lettera in self.guessedLetters))
+        print(' '.join(self.guessedLetters))
 
     def __write_in_classifica_txt(self) -> None:
         
-        f = open("src/classifica.txt", "a")
-        f.write(f"\n{self.nickname} ha vinto con {self.mistakesCounter} errori commessi.")
-        f.close()
+        with open("src/classfica.txt", "a") as f:
+            f.write(f"\n{self.nickname} ha vinto con {self.mistakesCounter} errori commessi.")
 
+    def _getWord(self, file_path: str) -> str:
+        wordsList: str = []  
+
+        with open(file_path, 'r') as f:
+            for line in f:
+                word_: str = line.rstrip('\n')
+                wordsList.append(word_)
+
+        return random.choice(wordsList) 
     
+
     def __show_player_life(self) -> object:
         
-        life = """
+        yield """
         ---
         """
-        yield life
+        
 
-        life = """
+        yield """
         |----
         |
         |
@@ -70,8 +79,8 @@ class Impiccato:
         |
         ---
         """
-        yield life
-        life = """
+        
+        yield """
         |----0
         |    |
         |    |
@@ -79,9 +88,9 @@ class Impiccato:
         |    |
         ---
         """
-        yield life
+        
 
-        life = """
+        yield """
         |----O
         |    |
         |   /|\\
@@ -90,9 +99,9 @@ class Impiccato:
         ---
         """
 
-        yield life
+        
 
-        life = """
+        yield """
         |----O
         |    |
         |   /|\\
@@ -101,8 +110,8 @@ class Impiccato:
         ---
         """
 
-        yield life
-        life = """
+        
+        yield """
 
         |--\\
         |   \O
@@ -111,4 +120,4 @@ class Impiccato:
         |    |
         --- /|\\
         """
-        yield life
+        

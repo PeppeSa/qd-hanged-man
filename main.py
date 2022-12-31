@@ -7,7 +7,7 @@ Created on 14/12/2022
 """
 
 
-from src.classModules import *
+from src.classModules import ImpiccatoFacile, ImpiccatoMedio, ImpiccatoDifficile
 from src.functions import setDifficulty, getNickname
 from src.i18n import choose_language, set_locale
 
@@ -26,14 +26,13 @@ def main() -> None:
     #lo "switch" serve solo per creare l'oggetto associato al liv di difficoltà
     match livDifficolta:
         case 1:
-            hanged: object = ImpiccatoFacile(nick)        
-            hanged.startGame()
+            hanged: object = ImpiccatoFacile(nick)            
         case 2:
-            hanged: object = ImpiccatoMedio(nick)        
-            hanged.startGame()
+            hanged: object = ImpiccatoMedio(nick)            
         case 3:
-            hanged: object = ImpiccatoDifficile(nick)        
-            hanged.startGame()        
+            hanged: object = ImpiccatoDifficile(nick)         
+
+    hanged.startGame()               
 
 if __name__ == "__main__":
     main()

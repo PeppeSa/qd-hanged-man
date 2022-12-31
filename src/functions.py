@@ -4,19 +4,16 @@ def setDifficulty() -> int:
     flag = False
     lvl: int = 0
 
-    while flag == False:
+    while True:
         
         lvl = int(input(_('\nScegli un livello di gioco:\n1. facile\n2. medio\n3. difficile\n\n')))
 
         if lvl == 1 or lvl == 2 or lvl == 3:
             
-            flag = True
+            return lvl       
+     
         
-        else:
-
-            print("\nInserire un'opzione valida")
-        
-    return lvl
+    
 
 def getNickname() -> str:
     
