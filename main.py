@@ -1,7 +1,9 @@
 """
 Created on 14/12/2022
 
-@author Giulia, Giuseppe
+
+
+@author Giulia, Giuseppe, Tommaso
 
 """
 
@@ -120,40 +122,62 @@ def show_player_life():
     yield life
 
 
-# fai scegliere all'utente la lingua
-lingua = choose_language()
 
-# impostala come lingua per questa partita
-_ = set_locale(lingua)
-
-lista_di_parole = carica_parole(lingua)
-parola_da_indovinare = parola_random(lista_di_parole)
-lettere_indovinate = ['_' for lettera in parola_da_indovinare]
-vita_giocatore = show_player_life()
-
-visualizza_parola(lettere_indovinate)
+from src.classModules import ImpiccatoFacile, ImpiccatoMedio, ImpiccatoDifficile
+from src.functions import setDifficulty, getNickname
+from src.i18n import choose_language, set_locale
 
 
-while True:
-  
-    scelta = choosen_word()
-    if scelta in parola_da_indovinare:
-        lettere_indovinate = aggiorna_lettere_indovinate(parola_da_indovinare, scelta, lettere_indovinate)
-        #if parola_da_indovinare == ''.join(lettera for lettera in lettere_indovinate):
-        #riscrivo così:
-        if parola_da_indovinare == ''.join(lettere_indovinate):
-            print(f'Hai vinto, complimenti! Hai indovinato la parola: {parola_da_indovinare}')
-            break
-    else:
-        try:
-            print(f'La parola non contiene la lettera {scelta}')
-            print(next(vita_giocatore))
-            
-        except StopIteration:
-            print(f'|--\ \n|   \O \n|   /|\ \n|    | \n    /|\ \n  GAME OVER\n')
-            print(f'Hai perso, la parola era: {parola_da_indovinare}')
-            break
 
-    visualizza_parola(lettere_indovinate)
+def main() -> None:
+    # fai scegliere all'utente la lingua
+    lingua = choose_language()
+
+    lista_di_parole = carica_parole(lingua)
+    parola_da_indovinare = parola_random(lista_di_parole)
+    lettere_indovinate = ['_' for lettera in parola_da_indovinare]
+    vita_giocatore = show_player_life()
 
 
+    # impostala come lingua per questa partita
+    _ = set_locale(lingua)
+
+    livDifficolta: int = setDifficulty()
+    nick: str = getNickname()
+
+    #il controllo sulla correttezza del livDifficoltà viene fatto in setDifficulty()
+    #lo "switch" serve solo per creare l'oggetto associato al liv di difficoltà
+    match livDifficolta:
+        case 1:
+            hanged: object = ImpiccatoFacile(nick)            
+        case 2:
+            hanged: object = ImpiccatoMedio(nick)            
+        case 3:
+            hanged: object = ImpiccatoDifficile(nick)         
+
+    hanged.startGame()               
+
+if __name__ == "__main__":
+    main()
+    
+#while True:
+
+#    scelta = choosen_word()
+#    if scelta in parola_da_indovinare:
+#        lettere_indovinate = aggiorna_lettere_indovinate(parola_da_indovinare, scelta, lettere_indovinate)
+#        #if parola_da_indovinare == ''.join(lettera for lettera in lettere_indovinate):
+#        #riscrivo così:
+#        if parola_da_indovinare == ''.join(lettere_indovinate):
+#            print(f'Hai vinto, complimenti! Hai indovinato la parola: {parola_da_indovinare}')
+#            break
+#    else:
+#        try:
+#            print(f'La parola non contiene la lettera {scelta}')
+#            print(next(vita_giocatore))
+#            
+#        except StopIteration:
+#            print(f'|--\ \n|   \O \n|   /|\ \n|    | \n    /|\ \n  GAME OVER\n')
+#            print(f'Hai perso, la parola era: {parola_da_indovinare}')
+#            break
+#
+#    visualizza_parola(lettere_indovinate)
