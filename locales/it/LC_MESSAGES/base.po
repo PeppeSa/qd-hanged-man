@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-12-28 18:51+0100\n"
+"POT-Creation-Date: 2023-03-19 19:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,23 +16,22 @@ msgstr ""
 
 
 #: .\main.py:13
-msgid ""
-"Scegli un livello di gioco:\n"
-"1. facile\n"
-"2. medio\n"
-"3. difficile\n"
-"\n"
-msgstr ""
-
-#: .\main.py:123
 msgid "Inserisci una lettera -> "
 msgstr ""
 
-#: .\main.py:132
-msgid "Hai vinto, complimenti! Hai indovinato la parola: %s"
+#: .\main.py:20
+msgid "Scegli un livello di gioco:\n1. facile\n2. medio\n3. difficile\n\n"
 msgstr ""
 
-#: .\main.py:138
-msgid "Hai perso, la parola era: %s"
+#: .\main.py:145
+msgid "Hai vinto, complimenti! Hai indovinato la parola: "
+msgstr ""
+
+#: .\main.py:149
+msgid "La parola non contiene la lettera "
+msgstr ""
+
+#: .\main.py:154
+msgid "Hai perso, la parola era: "
 msgstr ""
 

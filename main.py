@@ -10,7 +10,7 @@ import random
 from src.i18n import choose_language, set_locale
 
 def choosen_word() -> str:
-    scelta = input('Inserisci una lettera -> ')
+    scelta = input(_('Inserisci una lettera -> '))
     return scelta
 
 def carica_parole(lingua:str) -> str:
@@ -142,16 +142,16 @@ while True:
         #if parola_da_indovinare == ''.join(lettera for lettera in lettere_indovinate):
         #riscrivo così:
         if parola_da_indovinare == ''.join(lettere_indovinate):
-            print(f'Hai vinto, complimenti! Hai indovinato la parola: {parola_da_indovinare}')
+            print(_('Hai vinto, complimenti! Hai indovinato la parola: ') + parola_da_indovinare)
             break
     else:
         try:
-            print(f'La parola non contiene la lettera {scelta}')
+            print(_('La parola non contiene la lettera ') + scelta)
             print(next(vita_giocatore))
             
         except StopIteration:
             print(f'|--\ \n|   \O \n|   /|\ \n|    | \n    /|\ \n  GAME OVER\n')
-            print(f'Hai perso, la parola era: {parola_da_indovinare}')
+            print(_('Hai perso, la parola era: ') + parola_da_indovinare)
             break
 
     visualizza_parola(lettere_indovinate)
