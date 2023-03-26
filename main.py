@@ -12,7 +12,7 @@ import random
 from src.i18n import choose_language, set_locale
 
 def choosen_word() -> str:
-    scelta = input('Inserisci una lettera -> ')
+    scelta = input(_('Inserisci una lettera -> '))
     return scelta
 
 def carica_parole(lingua:str) -> str:
@@ -136,8 +136,10 @@ def main() -> None:
     # impostala come lingua per questa partita
     _ = set_locale(lingua)
 
+
     livDifficolta: int = setDifficulty()
     nick: str = getNickname()
+
 
     #il controllo sulla correttezza del livDifficoltà viene fatto in setDifficulty()
     #lo "switch" serve solo per creare l'oggetto associato al liv di difficoltà
