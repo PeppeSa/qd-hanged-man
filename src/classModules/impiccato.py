@@ -50,7 +50,7 @@ class Impiccato:
 
     def __write_in_classifica_txt(self) -> None:
         
-        with open("src/classfica.txt", "a") as f:
+        with open("src/classifica.txt", "a") as f:
             f.write(f"\n{self.nickname} ha vinto con {self.mistakesCounter} errori commessi.")
 
     def _getWord(self, file_path: str) -> str:
