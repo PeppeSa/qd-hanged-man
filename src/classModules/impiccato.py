@@ -11,15 +11,18 @@ il nickname dell'utente in un file di testo classifica.txt
   
 """
 class Impiccato:
-    def __init__(self, nickname: str) -> None:
+    def __init__(self, nickname: str, language: str, difficulty: str) -> None:
         self.nickname: str = nickname
         self.life: object = self.__show_player_life()
         self.mistakesCounter: int = 0
-        self.word: str = "prova" #questo attributo e quello sotto servono solo 
-        self.guessedLetters: str = ["_" for letter in self.word] #     per implementare il metodo startGame in mado da farlo ereditare 
-    
-    def startGame(self) -> None:
+        self.guessedLetters: str = "_"
+        self.language: str = language
+        self.difficulty: str = difficulty
         
+    
+    def startGame(self, _) -> None:
+        self.word = self._getWord()
+        self.guessedLetters = ["_" for letter in self.word]
         while self.mistakesCounter < 6:
             
             letter: str = input(_("\nInserisci una lettera -> "))
@@ -48,13 +51,14 @@ class Impiccato:
     def __visualizza_parola(self) -> None:
         print(' '.join(self.guessedLetters))
 
-    def __write_in_classifica_txt(self) -> None:
+    def __write_in_classifica_txt(self, _) -> None:
         
         with open("src/classifica.txt", "a") as f:
-            f.write(f"\n{self.nickname} ha vinto con {self.mistakesCounter} errori commessi.")
+            f.write(_("\n{self.nickname} ha vinto con {self.mistakesCounter} errori commessi."))
 
-    def _getWord(self, file_path: str) -> str:
-        wordsList: str = []  
+    def _getWord(self) -> str:
+        file_path = 'src/db_words/'+self.language+'/'+self.difficulty+'.txt'
+        wordsList: str = []
 
         with open(file_path, 'r') as f:
             for line in f:
