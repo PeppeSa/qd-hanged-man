@@ -1,5 +1,5 @@
 
-def setDifficulty() -> int:
+def setDifficulty(_) -> int:
 
     flag = False
     lvl: int = 0
@@ -15,8 +15,8 @@ def setDifficulty() -> int:
         
     
 
-def getNickname() -> str:
+def getNickname(_) -> str:
     
-    nick: str = input(_("\nInserisci un nickname (in caso di vittoria sarà salvato in un file di testo insieme al num di errori che hai commesso)\n\n")) 
+    nick: str = input(_("\nInserisci un nickname (in caso di vittoria sara' salvato in un file di testo insieme al num di errori che hai commesso)\n\n")) 
 
     return nick

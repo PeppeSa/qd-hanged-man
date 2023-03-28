@@ -11,11 +11,10 @@ import gettext
 # Set the local directory
 localedir = 'locales'
 
-def set_locale(language: str):
-    t = gettext.translation('base', localedir, fallback=True, languages=[language])
+def set_locale(language: str, domain: str):
+    t = gettext.translation(domain, localedir, fallback=True, languages=[language])
     t.install()
     return t.gettext
-
 
 def choose_language() -> str:
     language_choose_is_valid = False

@@ -16,11 +16,11 @@ def main() -> None:
     lingua = choose_language()
 
     # impostala come lingua per questa partita
-    _ = set_locale(lingua)
+    _ = set_locale(lingua, 'functions')
 
 
-    livDifficolta: int = setDifficulty()
-    nick: str = getNickname()
+    livDifficolta: int = setDifficulty(_)
+    nick: str = getNickname(_)
 
 
     #il controllo sulla correttezza del livDifficoltà viene fatto in setDifficulty()
@@ -33,6 +33,7 @@ def main() -> None:
         case 3:
             hanged: object = Impiccato(nick, lingua, 'hard')
 
+    _ = set_locale(lingua, 'base')
     hanged.startGame(_)
 
 if __name__ == "__main__":
