@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-03-19 19:24+0100\n"
+"POT-Creation-Date: 2023-03-27 19:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,23 +15,25 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: .\main.py:13
-msgid "Inserisci una lettera -> "
+#: .\src\classModules\impiccato.py:28
+msgid ""
+"\n"
+"Inserisci una lettera -> "
 msgstr ""
 
-#: .\main.py:20
-msgid "Scegli un livello di gioco:\n1. facile\n2. medio\n3. difficile\n\n"
+#: .\src\classModules\impiccato.py:34
+msgid " hai vinto, complimenti! Hai indovinato la parola: "
 msgstr ""
 
-#: .\main.py:145
-msgid "Hai vinto, complimenti! Hai indovinato la parola: "
+#: .\src\classModules\impiccato.py:42
+msgid " hai perso, la parola era: "
 msgstr ""
 
-#: .\main.py:149
-msgid "La parola non contiene la lettera "
+#: .\src\classModules\impiccato.py:57
+msgid " errori commessi."
 msgstr ""
 
-#: .\main.py:154
-msgid "Hai perso, la parola era: "
+#: .\src\classModules\impiccato.py:57
+msgid " ha vinto con "
 msgstr ""
 

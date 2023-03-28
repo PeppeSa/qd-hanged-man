@@ -30,8 +30,8 @@ class Impiccato:
             if letter in self.word:
                 self.guessedLetters = self.__aggiorna_lettere_indovinate(self.word, letter, self.guessedLetters)
                 if self.word == ''.join(self.guessedLetters):
-                    self.__write_in_classifica_txt()                    
-                    print(_(f"{self.nickname} hai vinto, complimenti! Hai indovinato la parola: {self.word}"))
+                    self.__write_in_classifica_txt(_)                    
+                    print(self.nickname + _(" hai vinto, complimenti! Hai indovinato la parola: ") + self.word)
                     break
             else:
                 self.mistakesCounter += 1
@@ -39,7 +39,7 @@ class Impiccato:
             print("\n")        
             self.__visualizza_parola()
         if self.mistakesCounter == 6:
-            print(_(f"{self.nickname} hai perso, la parola era: {self.word}"))
+            print(self.nickname + _(" hai perso, la parola era: ") + self.word)
     
     
     def __aggiorna_lettere_indovinate(self, parola: str, scelta: str, lettere_indovinate: str): 
@@ -54,7 +54,7 @@ class Impiccato:
     def __write_in_classifica_txt(self, _) -> None:
         
         with open("src/classifica.txt", "a") as f:
-            f.write(_("\n{self.nickname} ha vinto con {self.mistakesCounter} errori commessi."))
+            f.write("\n" + self.nickname + _(" ha vinto con ") + str(self.mistakesCounter) + _(" errori commessi."))
 
     def _getWord(self) -> str:
         file_path = 'src/db_words/'+self.language+'/'+self.difficulty+'.txt'
